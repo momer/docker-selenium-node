@@ -11,7 +11,7 @@ from maestro.extensions.logging.logstash import run_service
 
 NODE_CONFIG = '/var/lib/selenium/nodeConfig.json'
 
-with open(SUPERVISORD_CONF_FILE, 'r') as f:
+with open(NODE_CONFIG, 'r') as f:
     data = json.load(f)
     f.close()
 
@@ -20,7 +20,7 @@ data["configuration"]["port"] = os.environ.get('SELENIUM_HUB_PORT', 5555)
 data["configuration"]["hubHost"] = os.environ.get('SELENIUM_HUB_HOST', get_container_host_address())
 data["configuration"]["hubPort"] = os.environ.get('SELENIUM_HUB_PORT', 4444)
 
-with open(SUPERVISORD_CONF_FILE, 'w+') as f:
+with open(NODE_CONFIG, 'w+') as f:
     f.write(json.dumps(data))
     f.close()
 
