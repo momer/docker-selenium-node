@@ -12,5 +12,5 @@ fi
 export DISPLAY=:99
 
 /etc/init.d/xvfb start
-java -jar /var/lib/selenium/selenium-server-standalone-2.35.0.jar \
+java -jar /var/lib/selenium/selenium-server-standalone-2.42.2.jar \
 -role node -nodeConfig $NODE_CONFIG
