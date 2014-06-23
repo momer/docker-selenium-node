@@ -18,9 +18,8 @@ ADD supervisord/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 ADD run/run.py /var/lib/.docker/run.py
 
 ADD ./install /
-ADD http://selenium.googlecode.com/files/selenium-server-standalone-2.35.0.jar /var/lib/selenium/
 
-RUN chmod +x /var/lib/selenium/selenium-server-standalone-2.35.0.jar
+RUN chmod +x /var/lib/selenium/selenium-server-standalone-2.42.2.jar
 RUN chmod +x /var/lib/.docker/run.py
 RUN chmod +x /usr/local/bin/start_selenium.sh
 RUN chmod +x /etc/init.d/xvfb
