@@ -25,5 +25,6 @@ RUN chmod +x /etc/init.d/xvfb
 
 EXPOSE 5555
 
-CMD ["python", "/var/lib/.docker/run.py"]
+VOLUME /var/log/supervisor
 
+CMD ["python", "/var/lib/.docker/run.py"]

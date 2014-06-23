@@ -16,8 +16,10 @@ with open(NODE_CONFIG, 'r') as f:
     f.close()
 
 data["configuration"]["host"] = get_container_internal_address()
+#data["configuration"]["host"] = "127.0.0.1" 
 data["configuration"]["port"] = os.environ.get('SELENIUM_HUB_PORT', 5555)
 data["configuration"]["hubHost"] = os.environ.get('SELENIUM_HUB_HOST', get_container_host_address())
+#data["configuration"]["hubHost"] = os.environ.get('SELENIUM_HUB_HOST', "127.0.0.1")
 data["configuration"]["hubPort"] = os.environ.get('SELENIUM_HUB_PORT', 4444)
 
 with open(NODE_CONFIG, 'w+') as f:
