@@ -1,31 +1,16 @@
 #!/bin/bash
 
-USAGE="Usage: start_selenium <PORT> <TIMEOUT> <MAXSESSION> <BROWSER>"
+USAGE="Usage: start_selenium <nodeConfig>"
 
-PORT="$1"
-TIMEOUT="$2"
-MAXSESSION="$3"
-BROWSER="$4"
+NODE_CONFIG="$1"
 
-if [ "$PORT" = "" ]; then
-  PORT=4444
-fi
-
-if [ "$TIMEOUT" = "" ]; then
-  TIMEOUT=30
-fi
-
-if [ "$MAXSESSION" = "" ]; then
-  MAXSESSION=5
-fi
-
-if [ "$BROWSER" = "" ]; then
-  BROWSER="browserName=firefox,maxInstances=15"
+if [ "$NODE_CONFIG" = "" ]; then
+  echo "ERROR: Missing MAX_ITER." $USAGE
+  exit -1;
 fi
 
 export DISPLAY=:99
-/etc/init.d/xvfb start
 
+/etc/init.d/xvfb start
 java -jar /var/lib/selenium/selenium-server-standalone-2.35.0.jar \
--role hub -port $PORT -timeout $TIMEOUT -maxSession $MAXSESSION \
--browser $BROWSER
+-role node -nodeConfig $NODE_CONFIG
