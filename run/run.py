@@ -16,7 +16,8 @@ NODE_CONFIG = '/var/lib/selenium/nodeConfig.json'
 with open(NODE_CONFIG, 'r') as f:
     data = json.load(f)
     f.close()
-
+    
+data["configuration"]["host"] = get_container_host_address()
 data["configuration"]["port"] = os.environ.get('SELENIUM_HUB_PORT', 5555)
 data["configuration"]["hubHost"] = os.environ.get('SELENIUM_HUB_HOST', get_container_host_address())
 data["configuration"]["hubPort"] = os.environ.get('SELENIUM_HUB_PORT', 4444)

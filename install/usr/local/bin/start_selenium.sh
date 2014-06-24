@@ -25,4 +25,4 @@ export DISPLAY=:99
 
 /etc/init.d/xvfb start
 java -jar /var/lib/selenium/selenium-server-standalone-2.42.2.jar \
--role node -nodeConfig $NODE_CONFIG -hub $SELENIUM_HUB_HOST:$SELENIUM_HUB_PORT/grid/register
+-role node -nodeConfig $NODE_CONFIG -hub http://$SELENIUM_HUB_HOST:$SELENIUM_HUB_PORT/grid/register

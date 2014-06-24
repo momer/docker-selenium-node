@@ -9,6 +9,7 @@
       ],
   "configuration":
   {
+    "host": "",
     "nodeTimeout":120,
     "maxSession": 15,
     "port": 5555,
