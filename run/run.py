@@ -36,4 +36,4 @@ with open(SUPERVISORD_CONF_FILE, 'w+') as f:
       SELENIUM_HUB_PORT=os.environ.get('SELENIUM_HUB_PORT', 4444)))
 
 # Start Supervisord in the foreground.
-run_service(['/usr/bin/supervisord', '-n'])
+os.execl('/usr/bin/supervisord', '-n')
