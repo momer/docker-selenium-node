@@ -4,7 +4,9 @@
 import os
 import subprocess
 import string
+import textwrap
 import json
+
 
 from maestro.guestutils import *
 from maestro.extensions.logging.logstash import run_service
@@ -15,16 +17,22 @@ with open(NODE_CONFIG, 'r') as f:
     data = json.load(f)
     f.close()
 
-data["configuration"]["host"] = get_container_internal_address()
-#data["configuration"]["host"] = "127.0.0.1" 
 data["configuration"]["port"] = os.environ.get('SELENIUM_HUB_PORT', 5555)
 data["configuration"]["hubHost"] = os.environ.get('SELENIUM_HUB_HOST', get_container_host_address())
-#data["configuration"]["hubHost"] = os.environ.get('SELENIUM_HUB_HOST', "127.0.0.1")
 data["configuration"]["hubPort"] = os.environ.get('SELENIUM_HUB_PORT', 4444)
 
 with open(NODE_CONFIG, 'w+') as f:
     f.write(json.dumps(data))
     f.close()
+
+SUPERVISORD_CONF_FILE = '/etc/supervisor/conf.d/supervisord.conf'
+
+with open(SUPERVISORD_CONF_FILE) as f:
+    conf = string.Template(f.read())
+
+with open(SUPERVISORD_CONF_FILE, 'w+') as f:
+    f.write(conf.substitute(SELENIUM_HUB_HOST=os.environ.get('SELENIUM_HUB_HOST', get_container_host_address()),
+      SELENIUM_HUB_PORT=os.environ.get('SELENIUM_HUB_PORT', 4444)))
 
 # Start Supervisord in the foreground.
 run_service(['/usr/bin/supervisord', '-n'])
