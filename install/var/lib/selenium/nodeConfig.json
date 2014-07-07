@@ -3,7 +3,7 @@
       [
         {
           "browserName": "firefox",
-          "maxInstances": 15,
+          "maxInstances": 2,
           "seleniumProtocol": "WebDriver"
         }
       ],
@@ -11,7 +11,7 @@
   {
     "host": "",
     "nodeTimeout":120,
-    "maxSession": 15,
+    "maxSession": 5,
     "port": 5555,
     "register": true,
     "registerCycle": 10000,
