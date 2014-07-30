@@ -1,6 +1,6 @@
 FROM momer/maestro-base-oracle-jdk:0.0.2
 
-MAINTAINER Lewis Zhang "lewiszhang@gmail.com"
+MAINTAINER Mo Omer "beancinematics@gmail.com"
 
 # Forked by Mo Omer; added supervisord, config options
 RUN echo deb http://archive.ubuntu.com/ubuntu precise universe >> /etc/apt/sources.list
