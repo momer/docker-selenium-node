@@ -8,8 +8,10 @@
 Either git pull and build this docker image yourself, or pull down the version you need from the docker index.
 
 ```sh
-$ sudo docker pull momer/docker-selenium-node:`version`
+$ sudo docker pull momer/docker-selenium-node:1.0.0
 ```
+(note: Replace 1.0.0 with up-to-date version if any, check [DockerHub page](https://registry.hub.docker.com/u/momer/docker-selenium-node/tags/manage/) for more info about this image)
+
 
 ## Starting the container
 
@@ -41,5 +43,10 @@ This was designed to work with [MaestroNG](https://github.com/signalfuse/maestro
         lifecycle:
           running: [{type: tcp, port: selenium}]
 ```
+
+
+Alternatively, you can pass the necessary environment variables to `docker run` command to start the container. 
+
+    SELENIUM_NODE_CONTAINER=$(sudo docker run -e "CONTAINER_HOST_ADDRESS=xxx.xx.xx.xx" -e "SELENIUM_HUB_HOST=xxx.xx.xx.xx" -p 5555:5555 -d momer/docker-selenium-node:1.0.0)
 
 Selenium node is now available on port 5555 at the host and container.
