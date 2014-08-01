@@ -45,10 +45,8 @@ This was designed to work with [MaestroNG](https://github.com/signalfuse/maestro
 ```
 
 
-Also, you can pass the necessary environment variables to `docker run` command to start the container. 
+Alternatively, you can pass the necessary environment variables to `docker run` command to start the container. 
 
     SELENIUM_NODE_CONTAINER=$(sudo docker run -e "CONTAINER_HOST_ADDRESS=xxx.xx.xx.xx" -e "SELENIUM_HUB_HOST=xxx.xx.xx.xx" -p 5555:5555 -d momer/docker-selenium-node:1.0.0)
-(For example, I tested on AWS and I was using the internal IP address: 172.xxx.xx.xx)
-
 
 Selenium node is now available on port 5555 at the host and container.
