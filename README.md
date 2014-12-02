@@ -1,3 +1,10 @@
+# Important Note
+
+Official Docker containers made in conjunction with the Selenium team are available at:
+
+* https://github.com/SeleniumHQ/docker-selenium
+* https://registry.hub.docker.com/repos/selenium/
+
 ## Docker image for Selenium Node
 
 * [selenium](http://docs.seleniumhq.org/)
